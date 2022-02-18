@@ -1,0 +1,50 @@
+<launch>
+    <arg name="pkg" default="$(find hd_ccsom)" />
+    <arg name="method" default="hd_csm"/>
+    <!-- <arg name="method" default="semantic_csm"/> -->
+    <arg name="dataset" default="gazebo"/>
+    <arg name="speed" default="0.2"/>
+    <!-- 0.2 -->
+
+   
+    <arg name="method_config" value="$(arg pkg)/config/methods" />
+    <arg name="data_config" value="$(arg pkg)/config/datasets/" />
+    <arg name="matrix_config" value="$(arg pkg)/config/matrix/" />
+    <arg name="methods" default="6"/>
+    
+    <node pkg="hd_ccsom" type="multi_senior_node" name="robot1"   output="screen">
+        <!-- Load method configuration from file -->
+        <rosparam file="$(arg method_config)/$(arg method).yaml" command="load" />
+        <!-- Load dataset configuration from file -->
+        <rosparam file="$(arg data_config)/$(arg dataset).yaml" command="load" />    
+        <rosparam file="$(arg matrix_config)/r2tor1_dyn7.yaml" command="load" />    
+        <param name="name" type="string" value="/robot1" />
+        <param name="frientname" type="string" value="/robot2" />
+        <param name="cloudTP_gazebo" type="string" value="/gazebo/seg_cloud" />
+        <param name="methods" type="int" value="$(arg methods)" />
+    </node>
+
+    <node pkg="rosbag" type="play" name="rosbag1" 
+		args="$(find hd_ccsom)/data/gazebo_dyn7_1.bag -r $(arg speed)"/>
+
+    <node pkg="hd_ccsom" type="multi_senior_node" name="robot2"  output="screen">
+        <!-- Load method configuration from file -->
+        <rosparam file="$(arg method_config)/$(arg method).yaml" command="load" />
+        <!-- Load dataset configuration from file -->
+        <rosparam file="$(arg data_config)/$(arg dataset).yaml" command="load" />    
+        <rosparam file="$(arg matrix_config)/r1tor2_dyn7.yaml" command="load" />    
+        <param name="name" type="string" value="/robot2" />
+        <param name="frientname" type="string" value="/robot1" />
+        <param name="cloudTP_gazebo" type="string" value="/gazebo/seg_cloud_2" />
+        <param name="methods" type="int" value="$(arg methods)" />
+
+		<remap from="/tf" to="/tf2" />
+    </node>
+
+      <node pkg="rosbag" type="play" name="rosbag2" 
+      args="$(find hd_ccsom)/data/gazebo_dyn7_2.bag -r $(arg speed) /gazebo/seg_cloud:=/gazebo/seg_cloud_2 /tf:=/tf2 "/>
+    
+
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find hd_ccsom)/rviz/multi_node.rviz" />
+
+</launch>

@@ -1,0 +1,25 @@
+# semantickitti_04 config
+
+# Map information
+resolution: 0.3  # 0.3   地图分辨率，如果对于小范围的场景，太大了看起来就很丑，semantic kitti用0.3可以，但是学长录得0.1才行
+num_class: 21  # Number of classes 20     对于semantic kitti是35，学长这个20就够
+
+# Sampling resolutions
+free_resolution: 1000  # Free space sampling resolution 100，这个不知道为啥，这个影响厚实程度，如果用100不采样free点，就会很厚实，就不适合学长录得.   0.5的时候效果就很不错了
+ds_resolution: 0.2 # Downsampling factor  0.1 ，不能大于地图分辨率
+
+# Information about range-finder data
+scan_num: 10 # How many scans to use  100
+max_range: -1 # Sensor max range (m)  -1  最大感知距离，限制一下可以提高建图效率呢，比如学长的需要限制在15
+
+color_num: 2
+
+# Dataset information
+input_data_prefix: velodyne/
+input_label_prefix: labels/  #predictions/    #自己预测的，可视化用的这个
+lidar_pose_file: poses.txt
+gt_label_prefix: labels/   #labels/     #真值，评估用的这个
+evaluation_result_prefix: evaluations/
+
+query: false  # 不评估了
+visualize: true

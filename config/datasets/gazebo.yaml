@@ -1,0 +1,19 @@
+# semantickitti_04 config
+
+# Map information
+resolution: 0.2 # 0.2   地图分辨率，如果对于小范围的场景，太大了看起来就很丑，semantic kitti用0.3可以，但是学长录得0.1才行
+num_class: 9  # Number of classes    
+
+# Sampling resolutions
+free_resolution: 100 # Free space sampling resolution 100，这个不知道为啥，这个影响厚实程度，如果用100不采样free点，就会很厚实，就不适合学长录得.   0.5的时候效果就很不错了
+ds_resolution: 0.1 # Downsampling factor  0.1 ，不能大于地图分辨率
+
+# Information about range-finder data
+scan_num: 200 # How many scans to use  100
+max_range: 25 # Sensor max range (m)  -1  最大感知距离，25
+
+color_num: 5
+
+# Dataset information
+query: false
+visualize: true

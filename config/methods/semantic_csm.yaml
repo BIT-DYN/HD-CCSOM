@@ -1,0 +1,18 @@
+# SemanticBKIOctoMap config
+
+# Octree parameter
+block_depth: 1 # Test-data octree depth (see Wang & Englot ICRA 2016)  就是块的深度 3，深度决定了block大小.
+
+# Kernel parameters
+sf2:  0.1 # Actually sigma_0 in sparse kernel  10.0，决定了扩展块的影响程度，也不影响速度之类的
+ell: 0.3 # Length scale of the sparse kernel 0.3  0.4 for lidar   学长的可以小一点，smentickitti因为比较准，可以大一点
+
+# BGK Inference class prior pseudocounts
+prior: 0.001 # each class
+
+# Threshold on variance to distinguish known/unknown
+var_thresh: 0.09
+
+# Free/Occupied Thresholds
+free_thresh: 0.3
+occupied_thresh: 0.7
