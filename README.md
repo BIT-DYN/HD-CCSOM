@@ -26,8 +26,10 @@ catkin_ws$ source ~/catkin_ws/devel/setup.bash
 ### Downloading the Dataset
 
 Download the demo dataset and place them in directory  "catkin_ws/src/HD-CCSOM/data/*.bag".
-Baidu Drive: 
-Google Drive: 
+
+[Baidu Cloud Disk](https://pan.baidu.com/s/1MNne-sYKJ7nwjxB0PjZiTg?pwd=a6bx )
+
+[Google Drive](https://drive.google.com/drive/folders/1QqWbfXb1OFcQoGQFMKcS6NNP_UApdNt5?usp=sharing) 
 
 ### Running the Demo
 First, each robot builds a local semantic map.
