@@ -48,3 +48,16 @@ rosservice call /robot2/manual_triger
 Each robot stores a local map and a global map.
 
 <img src="https://github.com/BIT-DYN/HD-CCSOM/blob/master/image/dyn7_1.png" width="250"><img src="https://github.com/BIT-DYN/HD-CCSOM/blob/master/image/dyn7_2.png" width="250"><img src="https://github.com/BIT-DYN/HD-CCSOM/blob/master/image/dyn7_12.png" width="250">
+
+## Citation
+
+```
+@inproceedings{deng2022hd,
+  title={Hd-ccsom: Hierarchical and dense collaborative continuous semantic occupancy mapping through label diffusion},
+  author={Deng, Yinan and Wang, Meiling and Yang, Yi and Yue, Yufeng},
+  booktitle={2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={2417--2422},
+  year={2022},
+  organization={IEEE}
+}
+```
